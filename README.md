@@ -1,10 +1,10 @@
 # flasky
 "pop up" web app
 
-代码从分支页来：
+项目从分支页来：
 https://github.com/miguelgrinberg/flasky
 
-虽然是[《Flask Web Development》][https://www.flaskbook.com/] 一书中的练习项目，但实现的功能相当完整。
+虽然是[《Flask Web Development》](https://www.flaskbook.com/) 一书中的练习项目，但实现的功能相当完整。
 
 ### 安装
 
