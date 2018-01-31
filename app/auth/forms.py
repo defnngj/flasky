@@ -26,19 +26,19 @@ class RegistrationForm(FlaskForm):
 
     def validate_email(self, field):
         if User.query.filter_by(email=field.data).first():
-            raise ValidationError('Email already registered.')
+            raise ValidationError('电子邮件已经注册。')
 
     def validate_username(self, field):
         if User.query.filter_by(username=field.data).first():
-            raise ValidationError('Username already in use.')
+            raise ValidationError('用户名已被使用。')
 
 
 class ChangePasswordForm(FlaskForm):
-    old_password = PasswordField('Old password', validators=[Required()])
-    password = PasswordField('New password', validators=[
-        Required(), EqualTo('password2', message='Passwords must match')])
-    password2 = PasswordField('Confirm new password', validators=[Required()])
-    submit = SubmitField('Update Password')
+    old_password = PasswordField('旧密码', validators=[Required()])
+    password = PasswordField('新密码', validators=[
+        Required(), EqualTo('password2', message='密码必须匹配')])
+    password2 = PasswordField('重复新密码', validators=[Required()])
+    submit = SubmitField('更新密码')
 
 
 class PasswordResetRequestForm(FlaskForm):
@@ -61,11 +61,11 @@ class PasswordResetForm(FlaskForm):
 
 
 class ChangeEmailForm(FlaskForm):
-    email = StringField('New Email', validators=[Required(), Length(1, 64),
+    email = StringField('新邮箱', validators=[Required(), Length(1, 64),
                                                  Email()])
-    password = PasswordField('Password', validators=[Required()])
-    submit = SubmitField('Update Email Address')
+    password = PasswordField('密码', validators=[Required()])
+    submit = SubmitField('更新邮箱地址')
 
     def validate_email(self, field):
         if User.query.filter_by(email=field.data).first():
-            raise ValidationError('Email already registered.')
+            raise ValidationError('电子邮件已注册。')

@@ -8,15 +8,15 @@ from ..models import Role, User
 
 
 class NameForm(FlaskForm):
-    name = StringField('What is your name?', validators=[Required()])
-    submit = SubmitField('Submit')
+    name = StringField('你的名字?', validators=[Required()])
+    submit = SubmitField('提交')
 
 
 class EditProfileForm(FlaskForm):
-    name = StringField('Real name', validators=[Length(0, 64)])
-    location = StringField('Location', validators=[Length(0, 64)])
-    about_me = TextAreaField('About me')
-    submit = SubmitField('Submit')
+    name = StringField('昵称', validators=[Length(0, 64)])
+    location = StringField('城市', validators=[Length(0, 64)])
+    about_me = TextAreaField('自我介绍')
+    submit = SubmitField('提交')
 
 
 class EditProfileAdminForm(FlaskForm):
@@ -28,10 +28,10 @@ class EditProfileAdminForm(FlaskForm):
                                           'numbers, dots or underscores')])
     confirmed = BooleanField('Confirmed')
     role = SelectField('Role', coerce=int)
-    name = StringField('Real name', validators=[Length(0, 64)])
-    location = StringField('Location', validators=[Length(0, 64)])
-    about_me = TextAreaField('About me')
-    submit = SubmitField('Submit')
+    name = StringField('昵称', validators=[Length(0, 64)])
+    location = StringField('城市', validators=[Length(0, 64)])
+    about_me = TextAreaField('自我介绍')
+    submit = SubmitField('提交')
 
     def __init__(self, user, *args, **kwargs):
         super(EditProfileAdminForm, self).__init__(*args, **kwargs)
@@ -42,19 +42,19 @@ class EditProfileAdminForm(FlaskForm):
     def validate_email(self, field):
         if field.data != self.user.email and \
                 User.query.filter_by(email=field.data).first():
-            raise ValidationError('Email already registered.')
+            raise ValidationError('邮箱已注册。')
 
     def validate_username(self, field):
         if field.data != self.user.username and \
                 User.query.filter_by(username=field.data).first():
-            raise ValidationError('Username already in use.')
+            raise ValidationError('用户名已在使用。')
 
 
 class PostForm(FlaskForm):
-    body = PageDownField("你想说点什么？", validators=[Required()])
+    body = PageDownField("你想说点什么？(支持 MarkDown 语法)", validators=[Required()])
     submit = SubmitField('提交')
 
 
 class CommentForm(FlaskForm):
-    body = StringField('Enter your comment', validators=[Required()])
-    submit = SubmitField('Submit')
+    body = StringField('输入您的评论', validators=[Required()])
+    submit = SubmitField('提交')
