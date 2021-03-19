@@ -26,7 +26,7 @@ greenlet==0.4.12
 html5lib==0.999999999
 idna==2.6
 itsdangerous==0.24
-Jinja2==2.9.6
+Jinja2==2.11.3
 locustio==0.8a2
 Mako==1.0.7
 Markdown==2.6.9
