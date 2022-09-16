@@ -28,7 +28,7 @@ idna==2.6
 itsdangerous==0.24
 Jinja2==2.9.6
 locustio==0.8a2
-Mako==1.0.7
+Mako==1.2.2
 Markdown==2.6.9
 MarkupSafe==1.0
 msgpack-python==0.4.8
